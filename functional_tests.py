@@ -7,17 +7,20 @@ from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver import FirefoxOptions
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "superlists_dj.settings")
 django.setup()
 
 class NewVisitorTest(StaticLiveServerTestCase):
     def setUp(self) -> None:
-        self.browser = webdriver.Firefox()
+        opts =  FirefoxOptions()
+        opts.add_argument("--headless")
+        self.browser = webdriver.Firefox(options=opts)
         staging_server = os.environ.get("STAGING_SERVER")
         print("Staging server:", staging_server)
         if staging_server:
-            self.live_server_url = f"https://127.0.0.1:8000/"
+            self.live_server_url = "http://" + staging_server
 
     def tearDown(self) -> None:
         self.browser.quit()
