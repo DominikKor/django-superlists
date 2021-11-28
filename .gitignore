@@ -1,4 +1,6 @@
+virtualenv
 db.sqlite3
 geckodriver.log
 __pychache__
 *.pyc
+functional_tests.py.save
