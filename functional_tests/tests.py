@@ -14,6 +14,8 @@ django.setup()
 
 MAX_WAIT = 10
 OPTS = FirefoxOptions()
+
+
 # OPTS.add_argument("--headless")
 
 class NewVisitorTest(LiveServerTestCase):
