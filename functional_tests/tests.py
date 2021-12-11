@@ -2,15 +2,15 @@ import os
 import time
 
 import django
-from django.contrib.staticfiles.testing import LiveServerTestCase
+from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from selenium import webdriver
 from selenium.common.exceptions import WebDriverException
 from selenium.webdriver import FirefoxOptions
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "superlists_dj.settings")
-django.setup()
+#os.environ.setdefault("DJANGO_SETTINGS_MODULE", "superlists_dj.settings")
+#django.setup()
 
 MAX_WAIT = 10
 OPTS = FirefoxOptions()
@@ -18,11 +18,10 @@ OPTS = FirefoxOptions()
 
 # OPTS.add_argument("--headless")
 
-class NewVisitorTest(LiveServerTestCase):
+class NewVisitorTest(StaticLiveServerTestCase):
     def setUp(self) -> None:
         self.browser = webdriver.Firefox(options=OPTS)
         staging_server = os.environ.get("STAGING_SERVER")
-        print("Staging server:", staging_server)
         if staging_server:
             self.live_server_url = "http://" + staging_server
 
