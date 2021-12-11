@@ -5,3 +5,4 @@ __pychache__
 *.pyc
 functional_tests.py.save
 .env
+/static
