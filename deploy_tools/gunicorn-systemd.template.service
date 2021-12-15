@@ -9,7 +9,7 @@ EnvironmentFile=/home/droko/sites/DOMAIN/.env
 
 ExecStart=/home/droko/sites/DOMAIN/virtualenv/bin/gunicorn \
     --bind unix:/tmp/DOMAIN.socket \
-    superlists.wsgi:application
+    superlists_dj.wsgi:application
 
 [Install]
 WantedBy=multi-user.target
