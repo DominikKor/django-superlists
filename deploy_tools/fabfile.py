@@ -9,14 +9,15 @@ def _get_latest_source():
     if exists('.git'):
         run('git fetch')
     else:
-        run(f'git clone {REPO_URL}')
+        run(f'git clone {REPO_URL} .')
     current_commit = local('git log -n 1 --format=%H', capture=True)
     run(f'git reset --hard {current_commit}')
 
 
 def _update_virtualenv():
     if not exists('virtualenv/bin/pip'):
-        run(f'python 3.7 -m venv virtualenv')
+        run(f'python3 -m venv virtualenv')
+    run('virtualenv/bin/python -m pip install --upgrade pip')
     run('virtualenv/bin/pip install -r requirements.txt')
 
 

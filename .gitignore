@@ -6,3 +6,5 @@ __pychache__
 functional_tests.py.save
 .env
 /static
+.idea
+venv
